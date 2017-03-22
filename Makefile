@@ -12,6 +12,6 @@ build:
 push:
 	docker push $(NS)/$(REPO):$(VERSION)
 
-shell:
+sh:
 	docker run --rm -i -t $(NS)/$(REPO):$(VERSION) /bin/bash
 
