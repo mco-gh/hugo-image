@@ -12,11 +12,11 @@ RUN apk update && apk upgrade \
   && npm uninstall -g npm \
   && rm -rf /var/cache/apk/*
 
-# Install Python3.
+# Install Python3 and Pygments.
 RUN apk update && apk upgrade \
   && apk add python3 \
   && rm -rf /var/cache/apk/*
-
+RUN pip install Pygments
 
 # Install golang 1.8.
 RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
@@ -32,5 +32,10 @@ RUN rm -rf /var/cache/apk/*
 RUN mkdir /go
 ENV GOPATH /go
 
+# Install Hugo.
+RUN go get -u -v github.com/kardianos/govendor
+RUN go get -u -v github.com/spf13/hugo
+RUN cd $GOPATH/src/github.com/spf13/hugo && govendor sync && go install
 
-
+# Install firebase tools.
+npm install -g firebase-tools
