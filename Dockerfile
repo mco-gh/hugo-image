@@ -2,6 +2,7 @@
 FROM alpine:edge
 RUN apk update && apk upgrade
 RUN apk add ca-certificates
+RUN apk add git openssh-client 
 RUN rm -rf /var/cache/apk/*
 
 # Install nodejs and npm.
@@ -31,7 +32,7 @@ ENV PATH="${PWD}/gocode/bin:${PATH}"
 RUN mkdir /gocode
 ENV GOPATH /gocode
 
-# Install and run Hugo.
+# Install Hugo.
 RUN go get -u -v github.com/kardianos/govendor
 RUN go get -u -v github.com/spf13/hugo
 RUN cd $GOPATH/src/github.com/spf13/hugo && govendor sync && go install
