@@ -37,6 +37,7 @@ RUN go get -u -v github.com/kardianos/govendor
 RUN go get -u -v github.com/spf13/hugo
 RUN cd $GOPATH/src/github.com/spf13/hugo && govendor sync && go install
 
-# Install firebase and sw-precache tools.
+# Install firebase, sw-precache, and lighthouse.
 RUN npm install -g firebase-tools
 RUN npm install -g sw-precache
+RUN npm install -g lighthouse
