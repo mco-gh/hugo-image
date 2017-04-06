@@ -10,4 +10,4 @@ The makefile supports three tasks:
 * make sh - run an interactive Bash in the published Docker image
 
 If you don't want to clone this repo and build your own image, you can also use my generated image directly 
-from [marcacohen/hugo-image on Docker Hub](https://hub.docker.com/r/marcacohen/hugo-image/).
+from Docker Hub via ```docker pull marcacohen/hugo-image```.
